@@ -4,18 +4,23 @@ import cvzone
 from cvzone.HandTrackingModule import HandDetector
 import time
 
+#atur camera dan resolusi video yang ditampilkan
 cap = cv2.VideoCapture(0)
 cap.set(3, 640)
 cap.set(4, 480)
 
+# mendeklarasikan variable detector sebagai objek dari kelas handDetector dengan parameter maxHands=1
 detector = HandDetector(maxHands=1)
 
+# mendeklarasikan variable variable kontrol seperti timer,state result, startgame dan list score
 timer = 0
 stateResult = False
 startGame = False
 scores = [0, 0]  # [AI, Player]
 
+# looping untuk menjalankan program game rock paper scissor
 while True:
+    # mengatur pembacaan kamera dan background aplikasi
     imgBG = cv2.imread("Resources/BG.png")
     success, img = cap.read()
 
